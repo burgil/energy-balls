@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .alive {
+                transition: all 0.16s ease;
+            }
+
+        </style>
+    </head>
+    <body>
+        <h1>AI Interface Options:</h1>
+        <hr>
+        <button id="LoadFromURL">Load From URL</button>
+        <select id="UrlBox">
+            <option disabled>White</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_1.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_10.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_11.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_13.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_16.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_17.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_19.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_21.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_26.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_27.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_28.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_33.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_34.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_35.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_38.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_4.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_40.json</option>
+            <option selected>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_41.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_42.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_45.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_49.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_50.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_6.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_7.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_8.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_9.json</option>
+            <option disabled>Red</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_1.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_10.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_11.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_13.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_16.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_17.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_19.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_21.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_26.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_27.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_28.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_33.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_34.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_35.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_38.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_4.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_40.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_41.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_42.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_45.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_49.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_50.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_6.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_7.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_8.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_9.json</option>
+            <option disabled>Green</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_1.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_10.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_11.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_13.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_16.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_17.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_19.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_21.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_26.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_27.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_28.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_33.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_34.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_35.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_38.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_4.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_40.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_41.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_42.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_45.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_49.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_50.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_6.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_7.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_8.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_9.json</option>
+            <option disabled>Black</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_1.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_10.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_11.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_12.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_13.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_14.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_16.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_17.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_19.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_21.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_25.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_26.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_27.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_28.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_29.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_33.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_34.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_35.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_38.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_4.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_40.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_41.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_42.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_45.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_49.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_50.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_6.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_7.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_8.json</option>
+            <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_9.json</option>
+        </select>
+        <hr>
+        <h2>Energy Balls Spawner:</h2>
+        <select id="EnergyBallResolution">
+            <option disabled>Select resolution</option>
+            <option selected>256x256</option>
+        </select>
+        <select id="EnergyBallFileType">
+            <option disabled>Select file type</option>
+            <option selected>WEBP</option>
+        </select>
+        <select id="EnergyBallBackgroundColor">
+            <option disabled>Select background color</option>
+            <option>Black</option>
+            <option>Green</option>
+            <option>Red</option>
+            <option selected>White</option>
+        </select>
+        <select id="EnergyBallDesign">
+            <option disabled>Select design</option>
+
+            <option disabled>-- 905 Frames</option>
+            <option max="905">50</option>
+            <option max="905">49</option>
+
+            <option disabled>-- 899 Frames</option>
+            <option max="899">5</option>
+            <option max="899">22</option>
+            <option max="899">23</option>
+            <option max="899">24</option>
+            <option max="899">44</option>
+
+            <option disabled>-- 869 Frames</option>
+            <option max="869">3</option>
+            <option max="869">47</option>
+
+            <option disabled>-- 776 Frames</option>
+            <option max="776">46</option>
+
+            <option disabled>-- 660 Frames</option>
+            <option max="660">30</option>
+            <option max="660">36</option>
+            <option max="660">37</option>
+            <option max="660">39</option>
+
+            <option disabled>-- 608 Frames</option>
+            <option max="608">15</option>
+
+            <option disabled>-- 602 Frames</option>
+            <option max="602">25</option>
+
+            <option disabled>-- 601 Frames</option>
+            <option max="601">48</option>
+
+            <option disabled>-- 599 Frames</option>
+            <option max="599">1</option>
+            <option max="599">9</option>
+            <option max="599">11</option>
+            <option max="599">12</option>
+            <option max="599">13</option>
+            <option max="599">14</option>
+            <option max="599">18</option>
+            <option max="599">29</option>
+            <option max="599">43</option>
+
+            <option disabled>-- 491 Frames</option>
+            <option max="491">32</option>
+
+            <option disabled>-- 486 Frames</option>
+            <option max="486">31</option>
+
+            <option disabled>-- 449 Frames</option>
+            <option max="449">2</option>
+            <option max="449">8</option>
+            <option max="449">6</option>
+            <option max="449">10</option>
+            <option max="449">20</option>
+            <option max="449">35</option>
+
+            <option disabled>-- 448 Frames</option>
+            <option max="448">45</option>
+
+            <option disabled>-- 299 Frames</option>
+            <option max="299">21</option>
+            <option max="299">26</option>
+            <option max="299">27</option>
+            <option max="299">40</option>
+
+            <option disabled>-- 292 Frames</option>
+            <option max="292" selected>41</option>
+
+            <option disabled>-- 242 Frames</option>
+            <option max="242">17</option>
+            <option max="242">19</option>
+
+            <option disabled>-- 239 Frames</option>
+            <option max="239">4</option>
+            <option max="239">7</option>
+            <option max="239">33</option>
+            <option max="239">34</option>
+            <option max="239">38</option>
+            <option max="239">42</option>
+
+            <option disabled>-- 180 Frames</option>
+            <option max="180">16</option>
+
+            <option disabled>-- 149 Frames</option>
+            <option max="149">28</option>
+
+        </select>
+        <br>
+        <button id="SpawnEnergyBall">Spawn Energy Ball</button>
+        <hr>
+        <h2>Max Energy Balls Frames:</h2>
+        <input id="MaxEnergyBallsFrames" type="number" value="9999" min="0">
+        <h2>Min Energy Balls Frames:</h2>
+        <input id="MinEnergyBallsFrames" type="number" value="0" min="0">
+        <hr>
+        <h2>Global FPS Controller:</h2>
+        <input id="GlobalFPS" type="number" value="60" min="0">
+        <button id="ControllerButton">Pause</button>
+        <hr>
+        <h2>Test Spawners:</h2>
+        <img id="PreviewEnergyBallSpawner" class="alive">
+        <script>
+            const debug = 4;
+            /*
+            // Alive box:
+            function getRandomTransform() {
+                const transformFunctions = [
+                    'rotate3d',
+                    'rotate',
+                    'rotateX',
+                    'rotateY',
+                    'scale',
+                    'scale3d',
+                    'scaleX',
+                    'scaleY',
+                    'skew',
+                    'skewY',
+                    'translate',
+                    'translate3d',
+                    'translateX',
+                    'translateY',
+                    'translateZ'
+                ];
+                const randomTransform = transformFunctions[Math.floor(Math.random() * transformFunctions.length)];
+                let values = '';
+                if (randomTransform.includes('3d')) {
+                    values = `${getRandomNumber2()}px, ${getRandomNumber2()}px, ${getRandomNumber2()}px`;
+                } else if (randomTransform.includes('scale')) {
+                    values = `${getRandomNumber2()}`;
+                } else if (randomTransform.includes('skew')) {
+                    values = `${getRandomNumber()}deg, ${getRandomNumber()}deg`;
+                } else if (randomTransform.includes('translate')) {
+                    values = `${getRandomNumber()}px, ${getRandomNumber()}px`;
+                } else if (randomTransform === 'rotate' || randomTransform === 'rotateX' || randomTransform === 'rotateY') {
+                    values = `${getRandomNumber()}deg`;
+                } else if (randomTransform === 'translateZ') {
+                    values = `${getRandomNumber()}px`;
+                }
+                return `${randomTransform}(${values})`;
+            }
+            function getRandomNumber() {
+                return Math.floor(Math.random() * (Math.floor(Math.random() * 22) + 1)) + 1;
+            }
+            function getRandomNumber2() {
+                return Math.floor(Math.random() * (Math.floor(Math.random() * 1.2) + 0.5)) + 0.5;
+            }
+            function applyRandomTransformation(element) {
+                const transform = getRandomTransform();
+                if (debug >= 1) console.log(transform);
+                element.style.transform = transform;
+            }
+            const box = document.getElementById('PreviewEnergyBallSpawner');
+            setInterval(function () {
+                applyRandomTransformation(box);
+            }, 100);
+            box.addEventListener('mousemove', () => {
+                applyRandomTransformation(box);
+            });
+            */
+            (() => {
+                'use strict';
+                // IndexedDB:
+                function openDatabase() {
+                    return new Promise((resolve, reject) => {
+                        const request = indexedDB.open('textDB', 1);
+                        request.onerror = () => {
+                            reject('Error opening database');
+                        }
+                        request.onsuccess = () => {
+                            resolve(request.result);
+                        }
+                        request.onupgradeneeded = event => {
+                            event.target.result.createObjectStore('texts');
+                        }
+                    });
+                }
+                let db;
+                async function loadDB() {
+                    db = await openDatabase();
+                    if (debug >= 2) console.log("DB Connection Open!")
+                }
+                loadDB();
+                async function storeText(key, text) {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction('texts', 'readwrite');
+                        const store = transaction.objectStore('texts');
+                        const request = store.put(text, key);
+                        request.onsuccess = () => {
+                            resolve();
+                        }
+                        request.onerror = () => {
+                            reject('Error storing text');
+                        }
+                    });
+                }
+                async function retrieveText(key) {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction('texts', 'readonly');
+                        const store = transaction.objectStore('texts');
+                        const request = store.get(key);
+                        request.onsuccess = () => {
+                            resolve(request.result);
+                        }
+                        request.onerror = () => {
+                            reject('Error retrieving text');
+                        }
+                    });
+                }
+                // Core Script:
+                let memory = {};
+                let currentTimer;
+                let animator = {
+                    currentFrame: 0,
+                    side: true,
+                    pause: true,
+                };
+                function startTimer() {
+                    currentTimer = setInterval(function () {
+                        requestAnimationFrame(async function () {
+                            if (!animator.pause) {
+                                const maxAnim = parseInt(EnergyBallDesign.querySelector('option:checked').getAttribute('max'));
+                                if (animator.currentFrame > maxAnim) animator.currentFrame = maxAnim;
+                                const currentPath = '/files/MP4 Energy Balls/Energy Balls - ' + EnergyBallResolution.value + ' - ' + EnergyBallBackgroundColor.value + ' MP4/' + EnergyBallDesign.value + '/frame_' + animator.currentFrame + '.' + EnergyBallFileType.value.toLowerCase();
+                                if (memory[currentPath]) {
+                                    PreviewEnergyBallSpawner.src = memory[currentPath];
+                                } else {
+                                    if (memory[currentPath] === undefined) {
+                                        memory[currentPath] = false;
+                                        const storedCache = await retrieveText(currentPath);
+                                        if (storedCache) {
+                                            if (debug >= 1) console.log("skipped download...", currentPath);
+                                            memory[currentPath] = storedCache;
+                                            PreviewEnergyBallSpawner.src = storedCache;
+                                        } else {
+                                            if (debug >= 1) console.log("no cache found...", currentPath);
+                                        }
+                                    } else {
+                                        if (memory[currentPath] === false) {
+                                            if (debug >= 1) console.log("still caching...", currentPath);
+                                        } else {
+                                            if (debug >= 1) console.log("unknown cache state...", currentPath, memory[currentPath]);
+                                        }
+                                    }
+                                }
+                                if (animator.side) {
+                                    animator.currentFrame++;
+                                    if (animator.currentFrame >= maxAnim) {
+                                        animator.side = false;
+                                    } else if (animator.currentFrame >= MaxEnergyBallsFrames.value) {
+                                        animator.side = false;
+                                    }
+                                } else {
+                                    animator.currentFrame--;
+                                    if (animator.currentFrame <= 0) {
+                                        animator.side = true;
+                                    } else if (animator.currentFrame <= MinEnergyBallsFrames.value) {
+                                        animator.side = true;
+                                    }
+                                }
+                            }
+                            if (animator.pause && document.title !== 'Paused') document.title = 'Paused';
+                        });
+                    }, 1000 / GlobalFPS.value);
+                }
+                requestAnimationFrame(startTimer);
+                ControllerButton.onclick = function () {
+                    if (ControllerButton.textContent == 'Pause') {
+                        clearInterval(currentTimer);
+                        ControllerButton.textContent = 'Resume';
+                    } else {
+                        ControllerButton.textContent = 'Pause';
+                        requestAnimationFrame(startTimer);
+                    }
+                }
+                function restartTimer() {
+                    clearInterval(currentTimer);
+                    requestAnimationFrame(startTimer);
+                }
+                GlobalFPS.addEventListener('keyup', function () {
+                    restartTimer();
+                });
+                GlobalFPS.addEventListener('change', function () {
+                    restartTimer();
+                });
+                // Max
+                MaxEnergyBallsFrames.addEventListener('keyup', function () {
+                    animator.MaxFrames = MaxEnergyBallsFrames.value;
+                    if (debug >= 1) console.log("Changed Max Energy Balls Frames:", animator.MaxFrames);
+                });
+                MaxEnergyBallsFrames.addEventListener('change', function () {
+                    animator.MaxFrames = MaxEnergyBallsFrames.value;
+                    if (debug >= 1) console.log("Changed Max Energy Balls Frames:", animator.MaxFrames);
+                });
+                // Min
+                MinEnergyBallsFrames.addEventListener('keyup', function () {
+                    animator.MinFrames = MinEnergyBallsFrames.value;
+                    if (debug >= 1) console.log("Changed Min Energy Balls Frames:", animator.MinFrames);
+                });
+                MinEnergyBallsFrames.addEventListener('change', function () {
+                    animator.MinFrames = MinEnergyBallsFrames.value;
+                    if (debug >= 1) console.log("Changed Min Energy Balls Frames:", animator.MinFrames);
+                });
+                // Energy Ball:;
+                SpawnEnergyBall.onclick = function () {
+                    animator.pause = !animator.pause;
+                    if (animator.pause) PreviewEnergyBallSpawner.src = '';
+                }
+                async function fetchJSON(url) {
+                    try {
+                        const cache = await caches.open('json-cache');
+                        const cachedResponse = await cache.match(url);
+                        if (cachedResponse) {
+                            if (debug >= 3) console.log('Returning cached JSON:', cachedResponse);
+                            return await cachedResponse.json();
+                        }
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        if (debug >= 3) console.log('Fetching fresh JSON from network');
+                        /*await */cache.put(url, response.clone());
+                        if (debug >= 3) console.log('Cached for later use..');
+                        return await response.json();
+                    } catch (error) {
+                        console.error('Error fetching JSON:', error);
+                    }
+                }
+                async function importDataFromJsonURL(JsonURL, callback = () => { }) {
+                    const jsonData = await fetchJSON(JsonURL);
+                    if (debug >= 3) console.log("Looping through data...");
+                    for (const item of Object.entries(jsonData)) {
+                        const key = item[0];
+                        const text = item[1];
+                        if (!memory[key]) {
+                            const storedCache = await retrieveText(key);
+                            if (storedCache) {
+                                if (debug >= 4) console.log("skipped download...", key);
+                                memory[key] = storedCache;
+                            } else {
+                                if (debug >= 4) console.log("caching...", key);
+                                memory[key] = text;
+                                storeText(key, text);
+                            }
+                        }
+                        if (debug >= 3) console.log("Loaded:", key);
+                    }
+                    if (debug >= 2) console.log('Data from url', JsonURL, 'imported successfully.');
+                    callback();
+                }
+                LoadFromURL.onclick = function () {
+                    importDataFromJsonURL(UrlBox.value);
+                }
+
+                importDataFromJsonURL('https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_41.json?v=2', function () {
+                    animator.pause = false;
+                });
+            })();
+        </script>
+    </body>
+</html>

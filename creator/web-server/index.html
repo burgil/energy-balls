@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            (() => {
+                'use strict';
+                // HTML:
+                document.body.innerHTML = `<h1>AI Interface Options:</h1>
+                <button id="Bkp1">Download IndexedDB Data as JSON</button>
+                <button id="Bkp2">Download IndexedDB Data as JSON From Memory (Faster)</button>
+                <button id="Bkp3">Import JSON Files into IndexedDB</button>
+                <button id="Bkp4">Import JSON's Folder into IndexedDB</button>
+                <hr>
+                <button id="LoadFromURL">Load From URL</button>
+                <select id="UrlBox">
+                    <option disabled>White</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_1.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_10.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_11.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_13.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_16.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_17.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_19.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_21.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_26.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_27.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_28.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_33.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_34.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_35.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_38.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_4.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_40.json</option>
+                    <option selected>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_41.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_42.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_45.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_49.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_50.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_6.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_7.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_8.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/White/Energy%20Balls%20-%20256x256%20-%20White_9.json</option>
+                    <option disabled>Red</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_1.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_10.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_11.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_13.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_16.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_17.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_19.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_21.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_26.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_27.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_28.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_33.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_34.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_35.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_38.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_4.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_40.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_41.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_42.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_45.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_49.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_50.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_6.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_7.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_8.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Red/Energy%20Balls%20-%20256x256%20-%20Red_9.json</option>
+                    <option disabled>Green</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_1.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_10.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_11.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_13.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_16.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_17.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_19.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_21.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_26.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_27.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_28.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_33.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_34.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_35.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_38.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_4.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_40.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_41.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_42.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_45.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_49.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_50.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_6.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_7.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_8.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Green/Energy%20Balls%20-%20256x256%20-%20Green_9.json</option>
+                    <option disabled>Black</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_1.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_10.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_11.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_12.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_13.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_14.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_16.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_17.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_19.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_21.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_25.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_26.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_27.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_28.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_29.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_33.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_34.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_35.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_38.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_4.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_40.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_41.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_42.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_45.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_49.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_50.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_6.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_7.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_8.json</option>
+                    <option>https://cdn.jsdelivr.net/gh/burgil/energy-balls@main/Energy%20Balls%20-%20256x256/Black/Energy%20Balls%20-%20256x256%20-%20Black_9.json</option>
+                </select>
+                <hr>
+                <h2>Energy Balls Spawner:</h2>
+                <select style="min-width: 170px" id="EnergyBallResolution">
+                    <option disabled>Select resolution</option>
+                    <option selected>256x256</option>
+                    <option>512x512</option>
+                </select>
+                <select style="min-width: 170px" id="EnergyBallFileType">
+                    <option disabled>Select file type</option>
+                    <option selected>WEBP</option>
+                    <option>PNG</option>
+                    <option>JPG</option>
+                </select>
+                <select style="min-width: 170px" id="EnergyBallBackgroundColor">
+                    <option disabled>Select background color</option>
+                    <option>Black</option>
+                    <option>Green</option>
+                    <option>Red</option>
+                    <option selected>White</option>
+                </select>
+                <select style="min-width: 170px" id="EnergyBallDesign">
+                    <option disabled>Select design</option>
+
+                    <option disabled>-- 905 Frames</option>
+                    <option max="905">50</option>
+                    <option max="905">49</option>
+
+                    <option disabled>-- 899 Frames</option>
+                    <option max="899">5</option>
+                    <option max="899">22</option>
+                    <option max="899">23</option>
+                    <option max="899">24</option>
+                    <option max="899">44</option>
+
+                    <option disabled>-- 869 Frames</option>
+                    <option max="869">3</option>
+                    <option max="869">47</option>
+
+                    <option disabled>-- 776 Frames</option>
+                    <option max="776">46</option>
+
+                    <option disabled>-- 660 Frames</option>
+                    <option max="660">30</option>
+                    <option max="660">36</option>
+                    <option max="660">37</option>
+                    <option max="660">39</option>
+
+                    <option disabled>-- 608 Frames</option>
+                    <option max="608">15</option>
+
+                    <option disabled>-- 602 Frames</option>
+                    <option max="602">25</option>
+
+                    <option disabled>-- 601 Frames</option>
+                    <option max="601">48</option>
+
+                    <option disabled>-- 599 Frames</option>
+                    <option max="599">1</option>
+                    <option max="599">9</option>
+                    <option max="599">11</option>
+                    <option max="599">12</option>
+                    <option max="599">13</option>
+                    <option max="599">14</option>
+                    <option max="599">18</option>
+                    <option max="599">29</option>
+                    <option max="599">43</option>
+
+                    <option disabled>-- 491 Frames</option>
+                    <option max="491">32</option>
+
+                    <option disabled>-- 486 Frames</option>
+                    <option max="486">31</option>
+
+                    <option disabled>-- 449 Frames</option>
+                    <option max="449">2</option>
+                    <option max="449">8</option>
+                    <option max="449">6</option>
+                    <option max="449">10</option>
+                    <option max="449">20</option>
+                    <option max="449">35</option>
+
+                    <option disabled>-- 448 Frames</option>
+                    <option max="448">45</option>
+
+                    <option disabled>-- 299 Frames</option>
+                    <option max="299">21</option>
+                    <option max="299">26</option>
+                    <option max="299">27</option>
+                    <option max="299">40</option>
+
+                    <option disabled>-- 292 Frames</option>
+                    <option max="292" selected>41</option>
+
+                    <option disabled>-- 242 Frames</option>
+                    <option max="242">17</option>
+                    <option max="242">19</option>
+
+                    <option disabled>-- 239 Frames</option>
+                    <option max="239">4</option>
+                    <option max="239">7</option>
+                    <option max="239">33</option>
+                    <option max="239">34</option>
+                    <option max="239">38</option>
+                    <option max="239">42</option>
+
+                    <option disabled>-- 180 Frames</option>
+                    <option max="180">16</option>
+
+                    <option disabled>-- 149 Frames</option>
+                    <option max="149">28</option>
+
+                </select>
+                <br>
+                <button id="SpawnEnergyBall">Spawn Energy Ball</button>
+                <button id="PreviewEnergyBall">Preview Energy Ball</button>
+                <button id="LoadEnergyBallVideo">Load Energy Ball Video</button>
+                <button id="PrecacheEnergyBallVideo">Precache Energy Ball Video</button>
+                <button id="PrecacheAllEnergyBallVideos">Precache All Energy Ball Videos</button>
+                <hr>
+                <h2>AI Chip Spawner:</h2>
+                <select style="min-width: 170px" id="AIChipDesign">
+                    <option disabled>Select chip design</option>
+
+                    <option disabled>-- 905 Frames</option>
+                    <option max="905" selected>AIChip Portrait</option>
+                    <option max="905">AIChip Landscape</option>
+                    <option max="905">AI Chip - 1024x1024 - Wires</option>
+                    <option max="905">AI Chip - 512x512 - Wires</option>
+
+                    <option disabled>-- 599 Frames</option>
+                    <option max="599">AI Chip Holder</option>
+
+                </select>
+                <select style="min-width: 170px" id="AIChipFileType">
+                    <option disabled>Select chip file type</option>
+                    <option selected>WEBP</option>
+                    <option>PNG</option>
+                    <option>JPG</option>
+                </select>
+                <br>
+                <button id="SpawnAIChip">Spawn AI Chip</button>
+                <button id="PreviewAIChip">Preview AI Chip</button>
+                <button id="LoadAIChipVideo">Load AI Chip Video</button>
+                <button id="PrecacheAIChipVideo">Precache AI Chip Video</button>
+                <button id="PrecacheAllAIChipVideos">Precache All AI Chip Videos</button>
+                <hr>
+                <div style="display: flex;gap: 5px;">
+                    <div style="display: flex;flex-direction: column;gap:">
+                        <h2>Max Energy Balls Frames:</h2>
+                        <input id="MaxEnergyBallsFrames" type="number" value="9999" min="0">
+                        <h2>Min Energy Balls Frames:</h2>
+                        <input id="MinEnergyBallsFrames" type="number" value="0" min="0">
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <h2>Max AI Chip Frames:</h2>
+                        <input id="MaxAIChipFrames" type="number" value="9999" min="0">
+                        <h2>Min AI Chip Frames:</h2>
+                        <input id="MinAIChipFrames" type="number" value="0" min="0">
+                    </div>
+                </div>
+                <hr>
+                <h2>Global FPS Controller:</h2>
+                <input id="GlobalFPS" type="number" value="60" min="0">
+                <button id="ControllerButton">Pause</button>
+                <hr>
+                <button id="TestCleaner">Clean Test Spawners</button>
+                <br>
+                <h2>Test Spawners:</h2>
+                <style>
+                    .alive {
+                        transition: all 0.16s ease;
+                    }
+                </style>
+                <div style="display: flex">
+                    <div style="display: flex;flex-direction: column;">
+                        <img id="PreviewEnergyBallSpawner" class="alive">
+                        <video controls autplay loop id="PreviewEnergyBallVideoSpawner"></video>
+                    </div>
+                    <div style="display: flex;flex-direction: column;">
+                        <img id="PreviewAIChipSpawner">
+                        <video controls autplay loop id="PreviewAIChipVideoSpawner"></video>
+                    </div>
+                </div>`;
+                // Alive box:
+                function getRandomTransform() {
+                    const transformFunctions = [
+                        'rotate3d',
+                        'rotate',
+                        'rotateX',
+                        'rotateY',
+                        'scale',
+                        'scale3d',
+                        'scaleX',
+                        'scaleY',
+                        'skew',
+                        'skewY',
+                        'translate',
+                        'translate3d',
+                        'translateX',
+                        'translateY',
+                        'translateZ'
+                    ];
+                    const randomTransform = transformFunctions[Math.floor(Math.random() * transformFunctions.length)];
+                    let values = '';
+                    if (randomTransform.includes('3d')) {
+                        values = `${getRandomNumber2()}px, ${getRandomNumber2()}px, ${getRandomNumber2()}px`;
+                    } else if (randomTransform.includes('scale')) {
+                        values = `${getRandomNumber2()}`;
+                    } else if (randomTransform.includes('skew')) {
+                        values = `${getRandomNumber()}deg, ${getRandomNumber()}deg`;
+                    } else if (randomTransform.includes('translate')) {
+                        values = `${getRandomNumber()}px, ${getRandomNumber()}px`;
+                    } else if (randomTransform === 'rotate' || randomTransform === 'rotateX' || randomTransform === 'rotateY') {
+                        values = `${getRandomNumber()}deg`;
+                    } else if (randomTransform === 'translateZ') {
+                        values = `${getRandomNumber()}px`;
+                    }
+                    return `${randomTransform}(${values})`;
+                }
+                function getRandomNumber() {
+                    return Math.floor(Math.random() * (Math.floor(Math.random() * 22) + 1)) + 1;
+                }
+                function getRandomNumber2() {
+                    return Math.floor(Math.random() * (Math.floor(Math.random() * 1.2) + 0.5)) + 0.5;
+                }
+                function applyRandomTransformation(element) {
+                    const transform = getRandomTransform();
+                    console.log(transform);
+                    element.style.transform = transform;
+                }
+                const box = document.getElementById('PreviewEnergyBallSpawner');
+                setInterval(function() {
+                    applyRandomTransformation(box);
+                }, 100);
+                box.addEventListener('mousemove', () => {
+                    applyRandomTransformation(box);
+                });
+                // IndexedDB:
+                function openDatabase() {
+                    return new Promise((resolve, reject) => {
+                        const request = indexedDB.open('textDB', 1);
+                        request.onerror = () => {
+                            reject('Error opening database');
+                        }
+                        request.onsuccess = () => {
+                            resolve(request.result);
+                        }
+                        request.onupgradeneeded = event => {
+                            event.target.result.createObjectStore('texts');
+                        }
+                    });
+                }
+                let db;
+                async function loadDB() {
+                    db = await openDatabase();
+                    console.log("DB Connection Open!")
+                }
+                loadDB();
+                async function getAllDataFromDB() {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction('texts', 'readonly');
+                        const store = transaction.objectStore('texts');
+                        const request = store.getAll();
+                        request.onsuccess = () => {
+                            resolve(request.result);
+                        }
+                        request.onerror = () => {
+                            reject('Error retrieving data from IndexedDB');
+                        }
+                    });
+                }
+                async function storeText(key, text) {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction('texts', 'readwrite');
+                        const store = transaction.objectStore('texts');
+                        const request = store.put(text, key);
+                        request.onsuccess = () => {
+                            resolve();
+                        }
+                        request.onerror = () => {
+                            reject('Error storing text');
+                        }
+                    });
+                }
+                async function retrieveText(key) {
+                    return new Promise((resolve, reject) => {
+                        const transaction = db.transaction('texts', 'readonly');
+                        const store = transaction.objectStore('texts');
+                        const request = store.get(key);
+                        request.onsuccess = () => {
+                            resolve(request.result);
+                        }
+                        request.onerror = () => {
+                            reject('Error retrieving text');
+                        }
+                    });
+                }
+                async function estimateStorageQuota() {
+                    if (navigator.storage && navigator.storage.estimate) {
+                        const quota = await navigator.storage.estimate();
+                        let percentageUsed = (quota.usage / quota.quota) * 100;
+                        const percentageRemaining = 100 - percentageUsed;
+                        const usedBytes = quota.usage;
+                        const remainingBytes = quota.quota - quota.usage;
+                        if (percentageUsed >= 50 && percentageUsed < 75) {
+                            console.log("%c" + `Used ${percentageUsed.toFixed(2)}%`, "padding: 5px 10px; background-color: green; color: #fff; border-radius: 4px; cursor: pointer;");
+                            console.log("%c" + `Remaining ${percentageRemaining.toFixed(2)}%`, "padding: 5px 10px; background-color: green; color: #fff; border-radius: 4px; cursor: pointer;");
+                        } else if (percentageUsed >= 75 && percentageUsed < 90) {
+                            console.log("%c" + `Used ${percentageUsed.toFixed(2)}%`, "padding: 5px 10px; background-color: yellow; color: #000; border-radius: 4px; cursor: pointer;");
+                            console.log("%c" + `Remaining ${percentageRemaining.toFixed(2)}%`, "padding: 5px 10px; background-color: yellow; color: #000; border-radius: 4px; cursor: pointer;");
+                        } else if (percentageUsed >= 90 && percentageUsed < 100) {
+                            console.log("%c" + `Used ${percentageUsed.toFixed(2)}%`, "padding: 5px 10px; background-color: red; color: #fff; border-radius: 4px; cursor: pointer;");
+                            console.log("%c" + `Remaining ${percentageRemaining.toFixed(2)}%`, "padding: 5px 10px; background-color: red; color: #fff; border-radius: 4px; cursor: pointer;");
+                        } else if (percentageUsed >= 100) {
+                            console.log("%c" + `Used ${percentageUsed.toFixed(2)}%`, "padding: 5px 10px; background-color: gray; color: #fff; border-radius: 4px; cursor: pointer;");
+                            console.log("%c" + `Remaining ${percentageRemaining.toFixed(2)}%`, "padding: 5px 10px; background-color: gray; color: #fff; border-radius: 4px; cursor: pointer;");
+                            console.log("%c" + `Out of Space!`, "padding: 5px 10px; background-color: red; color: #fff; border-radius: 4px; cursor: pointer;");
+                        } else {
+                            console.log("%c" + `Used ${percentageUsed.toFixed(2)}%`, "padding: 5px 10px; background-color: #007bff; color: #fff; border-radius: 4px; cursor: pointer;");
+                            console.log("%c" + `Remaining ${percentageRemaining.toFixed(2)}%`, "padding: 5px 10px; background-color: #007bff; color: #fff; border-radius: 4px; cursor: pointer;");
+                        }
+                        console.table([
+                            { Unit: 'Bytes', Used: usedBytes },
+                            { Unit: 'Kilobytes', Used: usedBytes / 1000 },
+                            { Unit: 'Megabytes', Used: usedBytes / 1000 / 1000 },
+                            { Unit: 'Gigabytes', Used: usedBytes / 1000 / 1000 / 1000 },
+                            { Unit: 'Terabytes', Used: usedBytes / 1000 / 1000 / 1000 / 1000 }
+                        ]);
+                        console.table([
+                            { Unit: 'Bytes', Remaining: remainingBytes },
+                            { Unit: 'Kilobytes', Remaining: remainingBytes / 1000 },
+                            { Unit: 'Megabytes', Remaining: remainingBytes / 1000 / 1000 },
+                            { Unit: 'Gigabytes', Remaining: remainingBytes / 1000 / 1000 / 1000 },
+                            { Unit: 'Terabytes', Remaining: remainingBytes / 1000 / 1000 / 1000 / 1000 }
+                        ]);
+                    }
+                }
+                estimateStorageQuota();
+                // Core Script:
+                let memory = {};
+                let currentTimer;
+                function downloader(url, callback, fail404Callback) {
+                    let didFail = false;
+                    const xhr = new XMLHttpRequest();
+                    let retrier;
+                    xhr.onload = function () {
+                        if (didFail) return;
+                        if (xhr.status === 200) {
+                            const reader = new FileReader();
+                            reader.onloadend = function () {
+                                if (didFail) return;
+                                clearTimeout(retrier);
+                                callback(reader.result);
+                            }
+                            reader.readAsDataURL(xhr.response);
+                        } else {
+                            clearTimeout(retrier);
+                            if (xhr.status == 404) {
+                                console.log('Failed to cache file due to bad response:', xhr.status, url);
+                                fail404Callback();
+                            } else {
+                                console.log('Failed to cache file due to unknown response:', xhr.status, url);
+                                delete memory[url];
+                            }
+                        }
+                    }
+                    xhr.onerror = function () {
+                        if (didFail) return;
+                        clearTimeout(retrier);
+                        console.log('Failed to cache file due to network error', xhr.status, url);
+                        delete memory[url];
+                    }
+                    xhr.onabort = function () {
+                        if (didFail) return;
+                        clearTimeout(retrier);
+                        console.log('Failed to cache file due to aborted request', url);
+                        delete memory[url];
+                    }
+                    xhr.open('GET', url);
+                    xhr.responseType = 'blob';
+                    xhr.send();
+                    retrier = setTimeout(function () {
+                        didFail = true;
+                        console.log('Failed to cache file due to timeout:', url);
+                        delete memory[url];
+                    }, 4000);
+                }
+                // Currently supports up to two animations at the same time within the same loop
+                let animator = {
+                    1: {
+                        currentFrame: 0,
+                        side: true,
+                        preview: true,
+                    },
+                    2: {
+                        currentFrame: 0,
+                        side: true,
+                        preview: true,
+                    },
+                };
+                async function cacher(animID, currentPath, Spawner, maxAnim) {
+                    if (memory[currentPath]) {
+                        Spawner.src = memory[currentPath];
+                    } else {
+                        if (memory[currentPath] === undefined) {
+                            memory[currentPath] = false;
+                            const storedCache = await retrieveText(currentPath);
+                            if (storedCache) {
+                                // console.log("skipped download...", currentPath);
+                                memory[currentPath] = storedCache;
+                                Spawner.src = storedCache;
+                            } else {
+                                // console.log("caching...", currentPath);
+                                downloader(currentPath, function (dataUrl) {
+                                    memory[currentPath] = dataUrl;
+                                    storeText(currentPath, dataUrl);
+                                    console.log("cached!", currentPath);
+                                }, function () {
+                                    console.log(animID, "Error Loading Animation File:", currentPath);
+                                });
+                                Spawner.src = currentPath;
+                            }
+                        } else {
+                            if (memory[currentPath] === false) {
+                                console.log("still caching...", currentPath);
+                            } else {
+                                console.log("unknown cache state...", currentPath, memory[currentPath]);
+                            }
+                        }
+                    }
+                    if (animator[animID].side) {
+                        animator[animID].currentFrame++;
+                        if (animator[animID].currentFrame >= maxAnim) {
+                            animator[animID].side = false;
+                        } else {
+                            if (animID == 1) {
+                                if (animator[animID].currentFrame >= MaxEnergyBallsFrames.value) {
+                                    animator[animID].side = false;
+                                }
+                            }
+                            if (animID == 2) {
+                                if (animator[animID].currentFrame >= MaxAIChipFrames.value) {
+                                    animator[animID].side = false;
+                                }
+                            }
+                        }
+                    } else {
+                        animator[animID].currentFrame--;
+                        if (animator[animID].currentFrame <= 0) {
+                            animator[animID].side = true;
+                        } else {
+                            if (animID == 1) {
+                                if (animator[animID].currentFrame <= MinEnergyBallsFrames.value) {
+                                    animator[animID].side = true;
+                                }
+                            }
+                            if (animID == 2) {
+                                if (animator[animID].currentFrame <= MinAIChipFrames.value) {
+                                    animator[animID].side = true;
+                                }
+                            }
+                        }
+                    }
+                }
+                function logProgress(progress, total) {
+                    console.clear();
+                    console.log(`Progress: ${(progress / total * 100).toFixed(2)}% (${progress}/${total})`);
+                }
+                function logProgress2(sub_progress, sub_total, progress, total) {
+                    if (sub_progress % 2_2 == 0 || sub_progress == sub_total) console.clear();
+                    if (sub_progress % 2_2 == 0 || sub_progress == sub_total) console.log(`Sub Progress: ${(sub_progress / sub_total * 100).toFixed(2)}% (${sub_progress}/${sub_total}) - Progress: ${(progress / total * 100).toFixed(2)}% (${progress}/${total})`);
+                }
+                PrecacheAllEnergyBallVideos.onclick = async function () {
+                    toggleImportantButtons(true);
+                    let currentFrame = 0;
+                    let currentSubFrames = 0;
+
+                    const els1 = EnergyBallDesign.querySelectorAll('option:not([disabled])');
+                    const totalFrames = els1.length;
+                    for (const oval of els1) {
+                        currentFrame += 1;
+                        const val = oval.textContent;
+                        const maxAnim = parseInt(oval.getAttribute('max'));
+                        // console.log(val, "maxAnim:", maxAnim);
+                        for (let i = 0; i <= maxAnim; i++) {
+                            currentSubFrames = i;
+                            const currentPath = '/files/MP4 Energy Balls/Energy Balls - ' + EnergyBallResolution.value + ' - ' + EnergyBallBackgroundColor.value + ' MP4/' + val + '/frame_' + i + '.' + EnergyBallFileType.value.toLowerCase();
+                            if (memory[currentPath] === undefined) {
+                                memory[currentPath] = false;
+                                const storedCache = await retrieveText(currentPath);
+                                if (storedCache) {
+                                    if (!memory[currentPath]) {
+                                        // console.log("skipped download...", currentPath);
+                                        memory[currentPath] = storedCache;
+                                    }
+                                } else {
+                                    // console.log("caching...", currentPath);
+                                    downloader(currentPath, function (dataUrl) {
+                                        memory[currentPath] = dataUrl;
+                                        storeText(currentPath, dataUrl);
+                                        console.log("cached!", currentPath);
+                                    }, function () {
+                                        console.log("ignored cache!", currentPath);
+                                    });
+                                    await new Promise(resolve => setTimeout(resolve, 10));
+                                }
+                            } else {
+                                if (memory[currentPath]) {
+                                    // console.log("already cached!", currentPath);
+                                } else {
+                                    console.log("still caching...", currentPath);
+                                }
+                            }
+                            logProgress2(currentSubFrames, maxAnim, currentFrame, totalFrames);
+                        }
+                    }
+                    logProgress(currentFrame, totalFrames);
+                    toggleImportantButtons(false);
+                }
+                PrecacheAllAIChipVideos.onclick = async function () {
+                    toggleImportantButtons(true);
+                    let currentFrame = 0;
+                    let currentSubFrames = 0;
+
+                    const els2 = AIChipDesign.querySelectorAll('option:not([disabled])');
+                    const totalFrames = els2.length;
+                    for (const oval of els2) {
+                        currentFrame += 1;
+                        const val = oval.textContent;
+                        const maxAnim = parseInt(oval.getAttribute('max'));
+                        // console.log(val, "maxAnim:", maxAnim);
+                        for (let i = 0; i <= maxAnim; i++) {
+                            currentSubFrames = i;
+                            const currentPath = '/files/AIChip MP4/' + val + '/frame_' + i + '.' + AIChipFileType.value.toLowerCase();
+                            if (memory[currentPath] === undefined) {
+                                memory[currentPath] = false;
+                                const storedCache = await retrieveText(currentPath);
+                                if (storedCache) {
+                                    if (!memory[currentPath]) {
+                                        // console.log("skipped download...", currentPath);
+                                        memory[currentPath] = storedCache;
+                                    }
+                                } else {
+                                    // console.log("caching...", currentPath);
+                                    downloader(currentPath, function (dataUrl) {
+                                        memory[currentPath] = dataUrl;
+                                        storeText(currentPath, dataUrl);
+                                        console.log("cached!", currentPath);
+                                    }, function () {
+                                        console.log("ignored cache!", currentPath);
+                                    });
+                                    await new Promise(resolve => setTimeout(resolve, 10));
+                                }
+                            } else {
+                                if (memory[currentPath]) {
+                                    // console.log("already cached!", currentPath);
+                                } else {
+                                    console.log("still caching...", currentPath);
+                                }
+                            }
+                            logProgress2(currentSubFrames, maxAnim, currentFrame, totalFrames);
+                        }
+                    }
+                    logProgress(currentFrame, totalFrames);
+                    toggleImportantButtons(false);
+                }
+                PrecacheEnergyBallVideo.onclick = async function () {
+                    toggleImportantButtons(true);
+                    let currentFrame = 0;
+                    const maxAnim = parseInt(EnergyBallDesign.querySelector('option:checked').getAttribute('max'));
+                    // console.log("Energy Ball maxAnim:", maxAnim);
+                    for (let i = 0; i <= maxAnim; i++) {
+                        currentFrame = i;
+                        const currentPath = '/files/MP4 Energy Balls/Energy Balls - ' + EnergyBallResolution.value + ' - ' + EnergyBallBackgroundColor.value + ' MP4/' + EnergyBallDesign.value + '/frame_' + i + '.' + EnergyBallFileType.value.toLowerCase();
+                        if (memory[currentPath] === undefined) {
+                            memory[currentPath] = false;
+                            const storedCache = await retrieveText(currentPath);
+                            if (storedCache) {
+                                // console.log("skipped download...", currentPath);
+                                memory[currentPath] = storedCache;
+                            } else {
+                                // console.log("caching...", currentPath);
+                                downloader(currentPath, function (dataUrl) {
+                                    memory[currentPath] = dataUrl;
+                                    storeText(currentPath, dataUrl);
+                                    console.log("cached!", currentPath);
+                                }, function () {
+                                    console.log("ignored cache!", currentPath);
+                                });
+                                await new Promise(resolve => setTimeout(resolve, 10));
+                            }
+                        } else {
+                            if (memory[currentPath]) {
+                                // console.log("already cached!", currentPath);
+                            } else {
+                                console.log("still caching...", currentPath);
+                            }
+                        }
+                        logProgress(currentFrame, maxAnim);
+                    }
+                    toggleImportantButtons(false);
+                }
+                PrecacheAIChipVideo.onclick = async function () {
+                    toggleImportantButtons(true);
+                    let currentFrame = 0;
+                    const maxAnim = parseInt(AIChipDesign.querySelector('option:checked').getAttribute('max'));
+                    // console.log("AI Chip maxAnim:", maxAnim);
+                    for (let i = 0; i <= maxAnim; i++) {
+                        currentFrame = i;
+                        const currentPath = '/files/AIChip MP4/' + AIChipDesign.value + '/frame_' + i + '.' + AIChipFileType.value.toLowerCase();
+                        if (memory[currentPath] === undefined) {
+                            memory[currentPath] = false;
+                            const storedCache = await retrieveText(currentPath);
+                            if (storedCache) {
+                                // console.log("skipped download...", currentPath);
+                                memory[currentPath] = storedCache;
+                            } else {
+                                // console.log("caching...", currentPath);
+                                downloader(currentPath, function (dataUrl) {
+                                    memory[currentPath] = dataUrl;
+                                    storeText(currentPath, dataUrl);
+                                    console.log("cached!", currentPath);
+                                }, function () {
+                                    console.log("ignored cache!", currentPath);
+                                });
+                                await new Promise(resolve => setTimeout(resolve, 10));
+                            }
+                        } else {
+                            if (memory[currentPath]) {
+                                // console.log("already cached!", currentPath);
+                            } else {
+                                console.log("still caching...", currentPath);
+                            }
+                        }
+                        logProgress(currentFrame, maxAnim);
+                    }
+                    toggleImportantButtons(false);
+                }
+                function setTitle(maxAnim) {
+                    if (!animator[1].preview && !animator[2].preview) {
+                        document.title = animator[1].currentFrame + '-' + animator[2].currentFrame + ' (' + maxAnim + ')';
+                    } else if (!animator[1].preview) {
+                        document.title = animator[1].currentFrame + ' (' + maxAnim + ')';
+                    } else if (!animator[2].preview) {
+                        document.title = animator[2].currentFrame + ' (' + maxAnim + ')';
+                    }
+                }
+                function startTimer() {
+                    currentTimer = setInterval(function () {
+                        requestAnimationFrame(function () {
+                            if (!animator[1].preview) {
+                                const animID = 1;
+                                const maxAnim = parseInt(EnergyBallDesign.querySelector('option:checked').getAttribute('max'));
+                                setTitle(maxAnim);
+                                if (animator[animID].currentFrame > maxAnim) animator[animID].currentFrame = maxAnim;
+                                const currentPath = '/files/MP4 Energy Balls/Energy Balls - ' + EnergyBallResolution.value + ' - ' + EnergyBallBackgroundColor.value + ' MP4/' + EnergyBallDesign.value + '/frame_' + animator[animID].currentFrame + '.' + EnergyBallFileType.value.toLowerCase();
+                                cacher(animID, currentPath, PreviewEnergyBallSpawner, maxAnim);
+                            }
+                            if (!animator[2].preview) {
+                                const animID = 2;
+                                const maxAnim = parseInt(AIChipDesign.querySelector('option:checked').getAttribute('max'));
+                                setTitle(maxAnim);
+                                if (animator[animID].currentFrame > maxAnim) animator[animID].currentFrame = maxAnim;
+                                const currentPath = '/files/AIChip MP4/' + AIChipDesign.value + '/frame_' + animator[animID].currentFrame + '.' + AIChipFileType.value.toLowerCase();
+                                cacher(animID, currentPath, PreviewAIChipSpawner, maxAnim);
+                            }
+                            if (animator[1].preview && animator[2].preview && document.title !== 'Paused') document.title = 'Paused';
+                        });
+                    }, 1000 / GlobalFPS.value);
+                }
+                requestAnimationFrame(startTimer);
+                ControllerButton.onclick = function () {
+                    if (ControllerButton.textContent == 'Pause') {
+                        clearInterval(currentTimer);
+                        ControllerButton.textContent = 'Resume';
+                    } else {
+                        ControllerButton.textContent = 'Pause';
+                        requestAnimationFrame(startTimer);
+                    }
+                }
+                function restartTimer() {
+                    clearInterval(currentTimer);
+                    requestAnimationFrame(startTimer);
+                }
+                GlobalFPS.addEventListener('keyup', function () {
+                    restartTimer();
+                });
+                GlobalFPS.addEventListener('change', function () {
+                    restartTimer();
+                });
+                // Max
+                MaxEnergyBallsFrames.addEventListener('keyup', function () {
+                    animator[1].MaxFrames = MaxEnergyBallsFrames.value;
+                    console.log("Changed Max Energy Balls Frames:", animator[1].MaxFrames);
+                });
+                MaxEnergyBallsFrames.addEventListener('change', function () {
+                    animator[1].MaxFrames = MaxEnergyBallsFrames.value;
+                    console.log("Changed Max Energy Balls Frames:", animator[1].MaxFrames);
+                });
+                MaxAIChipFrames.addEventListener('keyup', function () {
+                    animator[2].MaxFrames = MaxAIChipFrames.value;
+                    console.log("Changed Max Ai Chip Frames:", animator[2].MaxFrames);
+                });
+                MaxAIChipFrames.addEventListener('change', function () {
+                    animator[2].MaxFrames = MaxAIChipFrames.value;
+                    console.log("Changed Max Ai Chip Frames:", animator[2].MaxFrames);
+                });
+                // Min
+                MinEnergyBallsFrames.addEventListener('keyup', function () {
+                    animator[1].MinFrames = MinEnergyBallsFrames.value;
+                    console.log("Changed Min Energy Balls Frames:", animator[1].MinFrames);
+                });
+                MinEnergyBallsFrames.addEventListener('change', function () {
+                    animator[1].MinFrames = MinEnergyBallsFrames.value;
+                    console.log("Changed Min Energy Balls Frames:", animator[1].MinFrames);
+                });
+                MinAIChipFrames.addEventListener('keyup', function () {
+                    animator[2].MinFrames = MinAIChipFrames.value;
+                    console.log("Changed Min Ai Chip Frames:", animator[2].MinFrames);
+                });
+                MinAIChipFrames.addEventListener('change', function () {
+                    animator[2].MinFrames = MinAIChipFrames.value;
+                    console.log("Changed Min Ai Chip Frames:", animator[2].MinFrames);
+                });
+                // Energy Ball:;
+                SpawnEnergyBall.onclick = function () {
+                    animator[1].preview = false;
+                }
+                PreviewEnergyBall.onclick = function () {
+                    animator[1].preview = true;
+                    const currentFilePath = '/files/PNG/Energy Balls - ' + EnergyBallResolution.value + ' - PNG/' + EnergyBallDesign.value + '.' + EnergyBallFileType.value.toLowerCase();
+                    console.log(currentFilePath);
+                    PreviewEnergyBallSpawner.src = currentFilePath;
+                }
+                LoadEnergyBallVideo.onclick = function () {
+                    const currentFilePath = '/files/MP4 Energy Balls/Energy Balls - ' + EnergyBallResolution.value + ' - ' + EnergyBallBackgroundColor.value + ' MP4/' + EnergyBallDesign.value + '.mp4';
+                    console.log(currentFilePath);
+                    PreviewEnergyBallVideoSpawner.src = currentFilePath;
+                    PreviewEnergyBallVideoSpawner.play();
+                }
+                // AI Chip:;
+                SpawnAIChip.onclick = function () {
+                    animator[2].preview = false;
+                }
+                PreviewAIChip.onclick = function () {
+                    animator[2].preview = true;
+                    const currentFilePath = '/files/PNG/AIChip PNG/' + AIChipDesign.value + '.' + AIChipFileType.value.toLowerCase();
+                    console.log(currentFilePath);
+                    PreviewAIChipSpawner.src = currentFilePath;
+                }
+                LoadAIChipVideo.onclick = function () {
+                    const currentFilePath = '/files/AIChip MP4/' + AIChipDesign.value + '.mp4';
+                    console.log(currentFilePath);
+                    PreviewAIChipVideoSpawner.src = currentFilePath;
+                    PreviewAIChipVideoSpawner.play();
+                }
+                // Cleaner:
+                TestCleaner.onclick = function () {
+                    PreviewEnergyBallSpawner.src = '';
+                    PreviewEnergyBallVideoSpawner.src = '';
+                    PreviewAIChipSpawner.src = '';
+                    PreviewAIChipVideoSpawner.src = '';
+                }
+                // Export/Import:
+                Bkp1.onclick = function () {
+                    downloadDataAsJson();
+                }
+                Bkp2.onclick = function () {
+                    downloadDataAsJson(true);
+                }
+                Bkp3.onclick = function () {
+                    importDataFromJson();
+                }
+                Bkp4.onclick = function () {
+                    importDataFromJson(true);
+                }
+                function toggleImportantButtons(btnState) {
+                    if (ControllerButton.textContent == 'Pause') {
+                        clearInterval(currentTimer);
+                        ControllerButton.textContent = 'Resume';
+                    }
+                    Bkp1.disabled = btnState;
+                    Bkp2.disabled = btnState;
+                    Bkp3.disabled = btnState;
+                    Bkp4.disabled = btnState;
+                    PrecacheAllEnergyBallVideos.disabled = btnState;
+                    PrecacheAllAIChipVideos.disabled = btnState;
+                    PrecacheEnergyBallVideo.disabled = btnState;
+                    PrecacheAIChipVideo.disabled = btnState;
+                    SpawnEnergyBall.disabled = btnState;
+                    SpawnAIChip.disabled = btnState;
+                }
+                async function downloadDataAsJson(isMemory) {
+                    toggleImportantButtons(true);
+                    console.log("Grabbing all data from DB...");
+                    let data;
+                    if (isMemory) {
+                        console.log("Preparing memory download...");
+                        data = memory;
+                    } else {
+                        console.log("Preparing direct DB download...");
+                        data = await getAllDataFromDB();
+                    }
+                    let cur = 0;
+                    let ma = Object.entries(data).length;
+                    const finalList = {};
+                    for (const ldata in data) {
+                        cur++;
+                        const vdata = data[ldata];
+                        const cdata = ldata.split('/');
+                        const cfile = cdata[cdata.length - 1];
+                        const cfolder = cdata[cdata.length - 2];
+                        const cfolder_name = cdata[3].replace(' MP4', '');
+                        const finalfile = cfolder_name + '_' + cfolder + '.json';
+                        console.log("Folder:", cfolder, "Folder Name:", cfolder_name, "File:", cfile, 'Progress:', cur, '/', ma, ldata, vdata.length, vdata.length / 1000);
+                        if (!finalList[finalfile]) finalList[finalfile] = '';
+                        finalList[finalfile] += '"' + ldata + '": "' + vdata + '"' + ',';
+                        console.log('Parsed:', ldata);
+                    }
+                    for (const finalfile in finalList) {
+                        const finalfiledata = finalList[finalfile];
+                        const blob = new Blob(['{' + finalfiledata.slice(0, -1) + '}'], { type: 'application/json' });
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = finalfile;
+                        document.body.appendChild(a);
+                        a.click();
+                        document.body.removeChild(a);
+                        URL.revokeObjectURL(url);
+                        console.log('Finished preparing ' + finalfile + ' - downloading');
+                        console.log("--------------------------------");
+                    }
+                    toggleImportantButtons(false);
+                    console.log("Finished!")
+                }
+                async function fetchJSON(url) {
+                    try {
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return await response.json();
+                    } catch (error) {
+                        console.error('Error fetching JSON:', error);
+                    }
+                }
+                async function importDataFromJsonURL(JsonURL) {
+                    const jsonData = await fetchJSON(JsonURL);
+                    console.log("Looping through data...");
+                    for (const item of Object.entries(jsonData)) {
+                        const key = item[0];
+                        const text = item[1];
+                        memory[key] = text;
+                        storeText(key, text);
+                        console.log("Loaded:", key);
+                    };
+                    console.log('Data from url', JsonURL, 'imported successfully.');
+                }
+                LoadFromURL.onclick = function () {
+                    importDataFromJsonURL(UrlBox.value);
+                }
+                async function importDataFromJson(isFolderMode) {
+                    console.log("Select file(s) to import...");
+                    const fileInput = document.createElement('input');
+                    fileInput.type = 'file';
+                    if (isFolderMode) {
+                        fileInput.setAttribute('webkitdirectory', '');
+                        fileInput.setAttribute('mozdirectory', '');
+                        fileInput.setAttribute('msdirectory', '');
+                        fileInput.setAttribute('odirectory', '');
+                        fileInput.setAttribute('directory', '');
+                    }
+                    fileInput.accept = 'application/json';
+                    fileInput.multiple = true;
+                    fileInput.addEventListener('change', async function () {
+                        toggleImportantButtons(true);
+                        console.log("Preparing to import data from JSON file(s) to the DB...");
+                        const files = fileInput.files;
+                        if (!files || files.length === 0) {
+                            toggleImportantButtons(false);
+                            return;
+                        }
+                        for (let i = 0; i < files.length; i++) {
+                            const file = files[i];
+                            await new Promise((resolveFile, rejectFile) => {
+                                const reader = new FileReader();
+                                reader.onload = async function (event) {
+                                    console.log("Preparing import for file:", file.name);
+                                    const jsonData = event.target.result;
+                                    const data = JSON.parse(jsonData);
+                                    console.log("Looping through data...");
+                                    for (const item of Object.entries(data)) {
+                                        const key = item[0];
+                                        const text = item[1];
+                                        memory[key] = text;
+                                        storeText(key, text);
+                                        console.log("Loaded:", key);
+                                    };
+                                    console.log('Data from file', file.name, 'imported successfully.');
+                                    resolveFile();
+                                };
+                                reader.readAsText(file);
+                            });
+                        }
+                        console.log("Finished to import data from JSON file(s) to the DB!");
+                        toggleImportantButtons(false);
+                    });
+                    fileInput.click();
+                }
+            })();
+        </script>
+    </body>
+</html>

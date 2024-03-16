@@ -429,9 +429,11 @@
                     requestAnimationFrame(startTimer);
                 }
                 GlobalFPS.addEventListener('keyup', function () {
+                    if (ControllerButton.textContent !== 'Pause') ControllerButton.textContent = 'Pause';
                     restartTimer();
                 });
                 GlobalFPS.addEventListener('change', function () {
+                    if (ControllerButton.textContent !== 'Pause') ControllerButton.textContent = 'Pause';
                     restartTimer();
                 });
                 // Max
